@@ -10,6 +10,13 @@ module FeatureGate
     yield self
   end
 
+  def self.gate_page(name)
+    gated_feature = GatedFeature.where(name: name).first_or_create
+    if gated_feature.gated?
+      raise ActiveRecord::RecordNotFound
+    end
+  end
+
   def self.gate(name)
     gated_feature = GatedFeature.where(name: name).first_or_create
     if !gated_feature.gated?
