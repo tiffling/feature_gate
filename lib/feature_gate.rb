@@ -24,14 +24,14 @@ module FeatureGate
     end
   end
 
-  def self.turn_on!(name)
+  def self.open!(name)
     gated_feature = GatedFeature.find_by_name!(name)
-    gated_feature.turn_on!
+    gated_feature.deploy_feature!
   end
 
-  def self.turn_off!(name)
+  def self.close!(name)
     gated_feature = GatedFeature.find_by_name!(name)
-    gated_feature.turn_on!
+    gated_feature.gate_feature!
   end
 end
 
