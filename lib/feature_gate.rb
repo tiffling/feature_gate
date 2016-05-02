@@ -16,6 +16,16 @@ module FeatureGate
       yield
     end
   end
+
+  def self.turn_on!(name)
+    gated_feature = GatedFeature.find_by_name!(name)
+    gated_feature.turn_on!
+  end
+
+  def self.turn_off!(name)
+    gated_feature = GatedFeature.find_by_name!(name)
+    gated_feature.turn_on!
+  end
 end
 
 require 'feature_gate/engine'
