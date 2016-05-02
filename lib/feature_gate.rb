@@ -9,6 +9,13 @@ module FeatureGate
   def self.setup
     yield self
   end
+
+  def self.gate(name)
+    gated_feature = GatedFeature.where(name: name).first_or_create
+    if !gated_feature.gated?
+      yield
+    end
+  end
 end
 
 require 'feature_gate/engine'
