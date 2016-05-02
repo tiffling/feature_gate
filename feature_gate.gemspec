@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.summary     = 'A gem to toggle feature gates on and off'
   s.description = 'A gem to toggle feature gates on and off'
   s.authors     = ['Tiffany Huang']
-  s.email       = 'little.huang@gmail.'
+  s.email       = 'little.huang@gmail.com'
   s.files       = `git ls-files`.split("\n")
   s.homepage    = 'https://github.com/tiffling/feature_gate'
   s.license     = 'MIT'
