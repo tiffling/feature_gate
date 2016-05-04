@@ -1,3 +1,4 @@
 # ignore .gem files
 *.gem
 .DS_Store
+log/

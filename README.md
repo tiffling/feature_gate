@@ -22,7 +22,7 @@ All gates are closed by default, meaning the features you gate will be hidden un
 
 In view files:
 
-    <% FeatureGate.gate('gate-name') do %>
+    <% FeatureGate::Manager.gate('gate-name') do %>
       <h1>This is my gated content</h1>
       <p>I am not seen if the gate is on</p>
     <% end %>
@@ -30,13 +30,21 @@ In view files:
 In controller actions:
 
     def index
-      FeatureGate.gate_page('gate-name') # 404s if gate is closed
+      FeatureGate::Manager.gate_page('gate-name') # 404s if gate is closed
     end
 
 To deploy your feature:
 
-    FeatureGate.open!('gate-name')
+    FeatureGate::Manager.open!('gate-name')
 
 To gate your feature:
 
-    FeatureGate.close!('gate-name')
+    FeatureGate::Manager.close!('gate-name')
+
+To see the names of all opened gates:
+
+    FeatureGate::Manager.opened_gates
+
+To see the names of all closed gates:
+
+    FeatureGate::Manager.closed_gates
