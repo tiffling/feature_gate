@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    feature_gate (0.0.8)
+    feature_gate (0.0.9)
       rails (~> 4.0)
 
 GEM
