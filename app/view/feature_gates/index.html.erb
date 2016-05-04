@@ -1,0 +1,23 @@
+<h1>Feature Gates</h1>
+
+<h3>Opened Gates</h3>
+<ul>
+  <% @gates.each do |gate| %>
+    <li>
+      <%= gate.name %>
+      <%= link_to 'Close', feature_gate_path(gate, gated: true), method: :put %>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<h3>Closed Gates</h3>
+<ul>
+  <% @gates.each do |gate| %>
+    <li>
+      <%= gate.name %>
+      <%= link_to 'Open', feature_gate_path(gate, gated: false), method: :put %>
+    </li>
+  <% end %>
+</ul>

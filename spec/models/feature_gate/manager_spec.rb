@@ -54,7 +54,7 @@ describe FeatureGate::Manager do
 
       expect do
         FeatureGate::Manager.gate_page('new_gate')
-      end.not_to raise_error(ActionController::RoutingError)
+      end.not_to raise_error
     end
   end
 
