@@ -1,5 +1,6 @@
 module FeatureGate
   class GatedFeaturesController < ApplicationController
+    before_filter :ensure_feature_gate_control_allowed
     layout 'feature_gate/application'
 
     def index
@@ -18,6 +19,17 @@ module FeatureGate
       end
 
       redirect_to gated_features_path
+    end
+
+    private
+
+    define_method(:feature_gate_control_allowed?) do
+      true
+    end unless method_defined? :feature_gate_control_allowed?
+
+    def ensure_feature_gate_control_allowed
+      return if feature_gate_control_allowed?
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 end

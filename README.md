@@ -22,6 +22,8 @@ Add to `config/routes.rb`
 
 ## Usage
 
+### Gating features
+
 All gates are closed by default, meaning the features you gate will be hidden until you toggle the gates open.
 
 In view files:
@@ -36,6 +38,22 @@ In controller actions:
     def index
       FeatureGate::Manager.gate_page('gate-name') # 404s if gate is closed
     end
+
+### Managing gates
+
+#### Option 1: UI interface
+
+<img src="http://i.imgur.com/aeRlKv0.png" border="1">
+
+Go to `/feature_gate` for a preconfigured page that lists all your gates and give you the ability to toggle them open or close.
+
+To limit accessibility to this page, define `feature_gate_control_allowed?` in `application_controller.rb`. If the method is not defined, `/feature_gate` will be accessible to <em>all</em> users.
+
+    def feature_gate_control_allowed?
+      # condition for allowing user to toggle feature gates, ex: current_admin_user.present?
+    end
+
+#### Option 2: Console
 
 To deploy your feature:
 
