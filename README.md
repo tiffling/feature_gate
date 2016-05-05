@@ -16,6 +16,10 @@ Migrate to create the table in your DB:
 
     rake db:migrate
 
+Add to `config/routes.rb`
+
+    mount FeatureGate::Engine, at: '/feature_gate'
+
 ## Usage
 
 All gates are closed by default, meaning the features you gate will be hidden until you toggle the gates open.

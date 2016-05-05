@@ -1,11 +1,11 @@
-class CreateGatedFeatures < ActiveRecord::Migration
+class CreateFeatureGateGatedFeatures < ActiveRecord::Migration
   def change
-    create_table :gated_features do |t|
+    create_table :feature_gate_gated_features do |t|
       t.text :name, null: false
       t.boolean :gated, default: true, null: false
       t.timestamps
     end
 
-    add_index :gated_features, :name, unique: true
+    add_index :feature_gate_gated_features, :name, unique: true
   end
 end

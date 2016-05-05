@@ -7,7 +7,7 @@ class FeatureGateGenerator < Rails::Generators::Base
   desc 'creates gated_features table'
 
   def install
-    migration_template 'migration.rb', 'db/migrate/create_gated_features.rb'
+    migration_template 'migration.rb', 'db/migrate/create_feature_gate_gated_features.rb'
   end
 
   def self.next_migration_number(dirname)
