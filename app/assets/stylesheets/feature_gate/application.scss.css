@@ -1,0 +1,38 @@
+.content {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alert-success {
+  background-color: #d2e7ba;
+  color: #24a318;
+}
+
+.alert-notice {
+  background-color: #eeeec7;
+  color: #72725f;
+}
+
+.alert-error {
+  background-color: #f6c8cd;
+  color: #e35d6a;
+}
+
+.alert {
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.gates {
+  margin-bottom: 25px;
+}

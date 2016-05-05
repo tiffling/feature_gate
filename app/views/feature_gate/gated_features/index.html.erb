@@ -1,23 +1,35 @@
 <h1>Feature Gates</h1>
 
-<h3>Opened Gates</h3>
-<ul>
-  <% @gates.each do |gate| %>
-    <li>
-      <%= gate.name %>
-      <%= link_to 'Close', feature_gate_path(gate, gated: true), method: :put %>
-    </li>
+<section class="gates">
+  <h3>Opened Gates</h3>
+  <% if @opened_gates.any? %>
+    <ul>
+      <% @opened_gates.each do |gate| %>
+        <li>
+          <%= gate.name %>&nbsp;
+          <%= link_to 'Close', gated_feature_path(gate, gated: true), method: :put, data: { confirm: "Shutting down #{gate.name}, are you sure?" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <em>No opened gates</em>
   <% end %>
-</ul>
+</section>
 
 <hr>
 
-<h3>Closed Gates</h3>
-<ul>
-  <% @gates.each do |gate| %>
-    <li>
-      <%= gate.name %>
-      <%= link_to 'Open', feature_gate_path(gate, gated: false), method: :put %>
-    </li>
+<section class="gates">
+  <h3>Closed Gates</h3>
+  <% if @closed_gates.any? %>
+    <ul>
+      <% @closed_gates.each do |gate| %>
+        <li>
+          <%= gate.name %>
+          <%= link_to 'Open', gated_feature_path(gate, gated: false), method: :put, data: { confirm: "Deploying #{gate.name}, are you sure?" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <em>No closed gates</em>
   <% end %>
-</ul>
+</section>
