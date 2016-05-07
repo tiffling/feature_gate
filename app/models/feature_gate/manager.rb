@@ -35,5 +35,15 @@ module FeatureGate
       gated_feature = GatedFeature.find_by_name!(name)
       gated_feature.gate_feature!
     end
+
+    def self.destroy!(name)
+      gate = GatedFeature.find_by_name!(name)
+      if gate.destroyable?
+        gate.destroy!
+        puts "#{gate.name} destroyed"
+      else
+        puts "#{gate.name} is currently being used in the codebase, execute `feature_gate_cleaner #{gate.name}` in the terminal to remove all references to #{gate.name}"
+      end
+    end
   end
 end

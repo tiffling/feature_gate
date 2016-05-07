@@ -13,10 +13,22 @@ module FeatureGate
       gate = FeatureGate::GatedFeature.find(params[:id])
       if params[:gated] == 'true'
         gate.gate_feature!
-        flash[:notice] = 'Feature has been gated'
+        flash[:notice] = "#{gate.name} has been gated"
       else
         gate.deploy_feature!
-        flash[:success] = 'Feature is live!'
+        flash[:success] = "#{gate.name} is live!"
+      end
+
+      redirect_to gated_features_path
+    end
+
+    def destroy
+      gate = FeatureGate::GatedFeature.find(params[:id])
+      if gate.destroyable?
+        gate.destroy!
+        flash[:success] = "#{gate.name} has been deleted"
+      else
+        flash[:error] = "#{gate.name} is currently being used in the codebase, execute `feature_gate_cleaner #{gate.name}` in the terminal to remove all references to #{gate.name}"
       end
 
       redirect_to gated_features_path

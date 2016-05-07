@@ -52,6 +52,7 @@
         <th>Gate name</th>
         <th>Status</th>
         <th>Last updated at</th>
+        <th>Action</th>
       </tr>
 
       <% @stale_gates.each do |gate| %>
@@ -59,6 +60,7 @@
           <td><%= gate.name %></td>
           <td><%= gate.status %></td>
           <td><%= gate.updated_at.strftime('%F') %></td>
+          <td><%= link_to 'Destroy', gated_feature_path(gate), method: :delete, data: { confirm: "Destroying #{gate.name}, are you sure?" } %></td>
         </tr>
       <% end %>
     </table>

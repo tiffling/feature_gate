@@ -1,6 +1,6 @@
 # feature_gate
 
-A gem to help toggle features on and off in Rails applications without having to re-deploy.
+A gem to help manage toggling features on and off in Rails applications without having to re-deploy. Includes a preconfigured page for gate management and an executable for feature gate code cleanup in your codebase after a feature has been deployed.
 
 ## Installation
 
@@ -34,14 +34,14 @@ Add `config/initializers/feature_gate.rb`
 
 All gates are closed by default, meaning the features you gate will be hidden until you toggle the gates open.
 
-In view files (comment in `end` is optional and is just to make it removable via the cleaner):
+To gate a part of a page (add `# gate-name` after `end` to allow the cleaner executable to remove this line when cleaning the gate out of the files):
 
     <% FeatureGate::Manager.gate('gate-name') do %>
       <h1>This is my gated content</h1>
       <p>I am not seen if the gate is on</p>
     <% end # gate-name %>
 
-In controller actions:
+To gate an entire page:
 
     def index
       FeatureGate::Manager.gate_page('gate-name') # 404s if gate is closed
@@ -49,9 +49,10 @@ In controller actions:
 
 ### Managing gates
 
-<img src="http://i.imgur.com/p4lMIfo.png">
+<img src="http://i.imgur.com/qo8zESV.png">
 
-Go to `/feature_gate` for a preconfigured page that lists all your gates and give you the ability to toggle them open or close.
+Go to `/feature_gate` for a preconfigured page to manage your gates. It lists all your gates and gives you the ability to toggle them open or closed. Additionally, it lists all your "stale" gates - gates that have not been touched in 1 month (timeframe is configurable, see under Optional Configurations) and allows you to delete them from your database *if* it is no longer used in your codebase (this check is done automatically when you try to delete a gate).
+
 
 To limit accessibility to this page, define `feature_gate_control_allowed?` in `application_controller.rb`. If the method is not defined, `/feature_gate` will be accessible to <em>all</em> users.
 
@@ -86,3 +87,7 @@ To see the names of all closed gates:
 To see the names of all stale gates:
 
     FeatureGate::Manager.stale_gates
+
+To safely delete a gate (only deletes if not used in codebase):
+
+    FeatureGate::Manager.destroy!('gate-name')
