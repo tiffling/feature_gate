@@ -36,3 +36,16 @@ ul {
 .gates {
   margin-bottom: 25px;
 }
+
+th, td {
+  text-align: left;
+  padding-right: 10px;
+}
+
+th:last-child {
+  padding-right: 0;
+}
+
+td:last-child {
+  padding-right: 0;
+}

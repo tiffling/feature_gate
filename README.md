@@ -20,6 +20,14 @@ Add to `config/routes.rb`
 
     mount FeatureGate::Engine, at: '/feature_gate'
 
+## Optional Configurations
+
+Add `config/initializers/feature_gate.rb`
+
+    FeatureGate.setup do |config|
+      config.time_to_stale = 2.weeks # time until a gate is listed as stale, default is 1 month.
+    end
+
 ## Usage
 
 ### Gating features
@@ -70,3 +78,7 @@ To see the names of all opened gates:
 To see the names of all closed gates:
 
     FeatureGate::Manager.closed_gates
+
+To see the names of all stale gates:
+
+    FeatureGate::Manager.stale_gates

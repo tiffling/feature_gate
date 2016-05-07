@@ -22,6 +22,10 @@ module FeatureGate
       GatedFeature.closed.pluck(:name)
     end
 
+    def self.stale_gates
+      GatedFeature.stale.pluck(:name)
+    end
+
     def self.open!(name)
       gated_feature = GatedFeature.find_by_name!(name)
       gated_feature.deploy_feature!

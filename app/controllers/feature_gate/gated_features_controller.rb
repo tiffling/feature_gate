@@ -6,6 +6,7 @@ module FeatureGate
     def index
       @closed_gates = FeatureGate::GatedFeature.closed
       @opened_gates = FeatureGate::GatedFeature.opened
+      @stale_gates = FeatureGate::GatedFeature.stale.order(:updated_at)
     end
 
     def update

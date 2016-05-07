@@ -16,8 +16,6 @@
   <% end %>
 </section>
 
-<hr>
-
 <section class="gates">
   <h3>Closed Gates</h3>
   <% if @closed_gates.any? %>
@@ -31,5 +29,30 @@
     </ul>
   <% else %>
     <em>No closed gates</em>
+  <% end %>
+</section>
+
+<hr>
+
+<section class="gates">
+  <h3>Stale Gates</h3>
+  <% if @stale_gates.any? %>
+    <table>
+      <tr>
+        <th>Gate name</th>
+        <th>Status</th>
+        <th>Last updated at</th>
+      </tr>
+
+      <% @stale_gates.each do |gate| %>
+        <tr>
+          <td><%= gate.name %></td>
+          <td><%= gate.status %></td>
+          <td><%= gate.updated_at.strftime('%F') %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <em>No stale gates</em>
   <% end %>
 </section>
