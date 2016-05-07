@@ -1,5 +1,7 @@
 module FeatureGate
   class GatedFeature < ActiveRecord::Base
+    self.table_name = 'feature_gate_gated_features'
+
     validates :name, presence: true
     validates :gated, inclusion: { in: [true, false] }
 
