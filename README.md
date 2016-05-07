@@ -51,7 +51,7 @@ In controller actions:
 
 #### Option 1: UI interface
 
-<img src="http://i.imgur.com/aeRlKv0.png" border="1">
+<img src="http://i.imgur.com/p4lMIfo.png">
 
 Go to `/feature_gate` for a preconfigured page that lists all your gates and give you the ability to toggle them open or close.
 
