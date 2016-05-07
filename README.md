@@ -34,12 +34,12 @@ Add `config/initializers/feature_gate.rb`
 
 All gates are closed by default, meaning the features you gate will be hidden until you toggle the gates open.
 
-In view files:
+In view files (comment in `end` is optional and is just to make it removable via the cleaner):
 
     <% FeatureGate::Manager.gate('gate-name') do %>
       <h1>This is my gated content</h1>
       <p>I am not seen if the gate is on</p>
-    <% end %>
+    <% end # gate-name %>
 
 In controller actions:
 
