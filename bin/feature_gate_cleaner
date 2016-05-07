@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'feature_gate_cleaner'
+
+FeatureGateCleaner.clean(ARGV[0])

@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/tiffling/feature_gate'
   s.license     = 'MIT'
   s.require_paths = ['lib']
-  s.executables = ['feature_gate']
+  s.executables = ['feature_gate_cleaner']
 
   s.add_dependency 'rails', '~> 4.0'
   s.add_development_dependency('sqlite3', '~> 1.3')
