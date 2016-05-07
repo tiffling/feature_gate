@@ -10,10 +10,15 @@ module FeatureGate
     config.eager_load = false
   end
 
-  class Engine
-    def self.routes
-      OpenStruct.new(draw: true)
-    end
+  class Engine < Rails::Engine
+    isolate_namespace FeatureGate
+  end
+
+  class ApplicationController < ActionController::Base
+  end
+
+  def self.time_to_stale
+    1.month
   end
 end
 FeatureGate::Application.initialize!
