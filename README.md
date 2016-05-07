@@ -49,8 +49,6 @@ In controller actions:
 
 ### Managing gates
 
-#### Option 1: UI interface
-
 <img src="http://i.imgur.com/p4lMIfo.png">
 
 Go to `/feature_gate` for a preconfigured page that lists all your gates and give you the ability to toggle them open or close.
@@ -61,7 +59,13 @@ To limit accessibility to this page, define `feature_gate_control_allowed?` in `
       # condition for allowing user to toggle feature gates, ex: current_admin_user.present?
     end
 
-#### Option 2: Console
+To remove gates from your codebase after the feature has officially launched use the cleaner executable
+
+    $ feature_gate_cleaner gate_name
+
+#### Console commands
+
+If you prefer to use the console, you can also manage your gates with the following method calls:
 
 To deploy your feature:
 
