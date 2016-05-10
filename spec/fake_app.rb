@@ -16,10 +16,6 @@ module FeatureGate
 
   class ApplicationController < ActionController::Base
   end
-
-  def self.time_to_stale
-    1.month
-  end
 end
 FeatureGate::Application.initialize!
 

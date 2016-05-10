@@ -1,9 +1,19 @@
 module FeatureGate
-  mattr_accessor :time_to_stale
-  self.time_to_stale = 1.month
+  class << self
+    attr_accessor :configuration
+  end
 
   def self.setup
-    yield self
+    self.configuration ||= Configuration.new
+    yield(configuration)
+  end
+
+  class Configuration
+    attr_accessor :time_to_stale
+
+    def initialize
+      @time_to_stale = 1.month
+    end
   end
 end
 
