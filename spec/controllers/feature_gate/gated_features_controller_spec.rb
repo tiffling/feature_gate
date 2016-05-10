@@ -16,4 +16,26 @@ describe FeatureGate::GatedFeaturesController do
       expect(gate.reload).not_to be_gated
     end
   end
+
+  describe '#destroy' do
+    let!(:gate){ create(:gated_feature) }
+
+    before do
+      allow(FeatureGate::GatedFeature).to receive(:find).and_return(gate)
+    end
+
+    it 'destroys the gate if it is destroyable' do
+      allow(gate).to receive(:destroyable?).and_return true
+      expect do
+        delete :destroy, id: gate.id
+      end.to change{ FeatureGate::GatedFeature.count }.by(-1)
+    end
+
+    it 'does not destory the gate if it is not destroyable' do
+      allow(gate).to receive(:destroyable?).and_return false
+      expect do
+        delete :destroy, id: gate.id
+      end.not_to change{ FeatureGate::GatedFeature.count }
+    end
+  end
 end
