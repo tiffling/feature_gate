@@ -1,10 +1,13 @@
 module FeatureGate
   class << self
-    attr_accessor :configuration
+    attr_reader :configuration
+
+    def configuration
+      @configuration ||= Configuration.new
+    end
   end
 
   def self.setup
-    self.configuration ||= Configuration.new
     yield(configuration)
   end
 
