@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = FeatureGate::VERSION.dup
   s.date        = '2016-05-01'
   s.summary     = 'A gem to toggle feature gates on and off'
-  s.description = 'A gem to toggle feature gates on and off'
+  s.description = 'A gem to help manage toggling features on and off in Rails applications without having to re-deploy. Includes a preconfigured page for gate management and an executable for feature gate code cleanup in your codebase after a feature has been deployed.'
   s.authors     = ['Tiffany Huang']
   s.email       = 'little.huang@gmail.com'
   s.files       = `git ls-files`.split("\n")

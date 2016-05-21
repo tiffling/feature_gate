@@ -2,3 +2,9 @@
 *.gem
 .DS_Store
 log/
+Gemfile.lock
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
+spec/dummy/log/
+spec/dummy/tmp/
+spec/dummy/.sass-cache

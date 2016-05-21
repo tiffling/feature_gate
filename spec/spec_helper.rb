@@ -1,13 +1,14 @@
-ENV['RAILS_ENV'] = 'test'
+ENV['RAILS_ENV'] ||= 'test'
 
-require 'rails/all'
+require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
-require 'fake_app'
-
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
-
 require 'factory_girl'
 require 'factories'
+
+Rails.backtrace_cleaner.remove_silencers!
+
+# Load support files
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

@@ -8,9 +8,9 @@ Include gem in Gemfile:
 
     gem 'feature_gate'
 
-Run generator to create the migration needed
+Copy migration file to app:
 
-    rails generate feature_gate
+    rake feature_gate:install:migrations
 
 Migrate to create the table in your DB:
 

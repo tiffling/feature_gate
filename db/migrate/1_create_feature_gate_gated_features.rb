@@ -3,7 +3,7 @@ class CreateFeatureGateGatedFeatures < ActiveRecord::Migration
     create_table :feature_gate_gated_features do |t|
       t.text :name, null: false
       t.boolean :gated, default: true, null: false
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :feature_gate_gated_features, :name, unique: true
